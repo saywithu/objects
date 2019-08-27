@@ -81,3 +81,27 @@
     - 객체를 생성하는 시점에 생성자를 통해 의존성 해결
     - 객체 생성 후 Setter 메서드를 통해 의존성 해결
     - 메서드 실행 시 인자를 이용해 의존성 해결
+
+``` java
+public class Movie {
+    private String title;
+    private Duration runningTime;
+    private Money fee;
+    private DiscountPolicy discountPolicy;
+
+    public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
+        this.title = title;
+        this.runningTime = runningTime;
+        this.fee = fee;
+        this.discountPolicy = discountPolicy;
+    }
+
+    public Money getFee() {
+        return fee;
+    }
+
+    public Money calculateMovieFee(Screening screening) {
+        return fee.minus(discountPolicy.calculateDiscountAmount(screening));
+    }
+}
+```
