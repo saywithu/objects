@@ -106,7 +106,7 @@ public class Movie {
     }
     
     public Money getDiscountAmount(Screening Screening){
-        DiscountType discountType = moveService.getDiscountType(movieId);
+        DiscountType discountType = movieService.getDiscountType(movieId);
         if(discountType == DiscountType.AMOUNT){
           ...
           return fee;
